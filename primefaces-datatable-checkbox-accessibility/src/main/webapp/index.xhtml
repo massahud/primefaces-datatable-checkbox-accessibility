@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <style type="text/css">
+            .ui-helper-hidden-accessible {
+                height: auto !important;
+                width: auto !important;
+                position: static !important;
+                background-color: orange;
+            }           
+        </style>
+    </h:head>
+    <h:body>        
+        <h:form>
+            <p>
+                In this page the accessible hidden checkboxes are shown with orange background, select and unselect the checkbox using them, like a screen reader would do.
+            </p>
+            <p:separator/>
+            <p:selectBooleanCheckbox /> Normal checkbox (accessible)
+            <p:separator/>
+            <p:dataTable rowSelectMode="add"                          
+                         value="#{numberBean.numbers}" var="number"
+                         rowKey="#{number}"
+                         selection="#{numberBean.selected}">
+                <f:facet name="header">
+                    Accessibility not working with row selection checkbox
+                </f:facet>
+                <p:column selectionMode="multiple"/>
+                <p:column headerText="Number">
+                    <h:outputText value="#{number}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
